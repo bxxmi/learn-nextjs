@@ -6,19 +6,27 @@ const Launches = () => {
   useEffect(() => {
     const fetchLaunches = async () => {
       const response = await fetch("https://api.spacexdata.com/v3/launches");
-      const data = await response.json();
+      const datas = await response.json();
 
-      setData(data);
+      setData(datas);
     };
 
     fetchLaunches();
   }, []);
 
-  if (!data) {
+  if (data === null) {
     return null;
   }
 
-  return <div></div>;
+  return (
+    <div>
+      <ol>
+        {data.map((item, index) => {
+          <li key={index}>{item.mission_name}</li>;
+        })}
+      </ol>
+    </div>
+  );
 };
 
 export default Launches;
