@@ -1,32 +1,29 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
-const Launches = () => {
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    const fetchLaunches = async () => {
-      const response = await fetch("https://api.spacexdata.com/v3/launches");
-      const datas = await response.json();
-
-      setData(datas);
-    };
-
-    fetchLaunches();
-  }, []);
-
-  if (data === null) {
+export default function Launches({ datas }) {
+  if (datas === null) {
     return null;
   }
 
   return (
     <div>
       <ol>
-        {data.map((item, index) => {
+        {datas.map((item, index) => {
           <li key={index}>{item.mission_name}</li>;
         })}
       </ol>
     </div>
   );
-};
+}
 
-export default Launches;
+export async function getServerSideProps() {
+  const response = await fetch("https://api.spacexdata.com/v3/launches");
+  const datas = await response.json();
+
+  console.log("getServerSideProps");
+
+  return {
+    // page 컴포넌트에 props로 전달될 것
+    props: { datas },
+  };
+}
