@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-export default function Home() {
-  return (
-    <div>
-      <h1>HOME</h1>
-    </div>
-  );
-=======
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
@@ -74,5 +66,4 @@ export default function Home() {
       </footer>
     </div>
   )
->>>>>>> 96f6b89 (Initial commit from Create Next App)
 }
