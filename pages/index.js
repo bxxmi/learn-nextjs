@@ -18,8 +18,12 @@ export default function Home() {
         </h1>
 
         <p className={styles.description}>
-          Get started by editing{" "}
-          <code className={styles.code}>pages/index.js</code>
+          <Image
+            src="/images/images.jpeg"
+            alt="크롱"
+            width="300"
+            height="300"
+          />
         </p>
 
         <div className={styles.grid}>
